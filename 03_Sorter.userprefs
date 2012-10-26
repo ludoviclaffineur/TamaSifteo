@@ -1,11 +1,18 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SorterApp.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bootstrap.cs">
     <Files>
       <File FileName="Bootstrap.cs" Line="8" Column="17" />
       <File FileName="SorterApp.cs" Line="261" Column="43" />
       <File FileName="OSC.cs" Line="109" Column="41" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="03_Sorter" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
