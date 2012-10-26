@@ -41,7 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Net" />
     <Reference Include="Sifteo">
-      <HintPath>..\..\..\Documents\Sifteo\Sifteo_SDK_mac_1_1_2\Siftdev.app\Contents\Resources\Runtimes\Mono\Current\sifteo\Sifteo.dll</HintPath>
+      <HintPath>dlls\Sifteo.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
