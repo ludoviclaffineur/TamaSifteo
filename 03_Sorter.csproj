@@ -36,6 +36,8 @@
     <Compile Include="Bootstrap.cs" />
     <Compile Include="SorterApp.cs" />
     <Compile Include="OSC.cs" />
+    <Compile Include="ThreadRules.cs" />
+    <Compile Include="Tamagotchi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
