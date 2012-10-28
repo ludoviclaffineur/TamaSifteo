@@ -38,6 +38,7 @@
     <Compile Include="OSC.cs" />
     <Compile Include="ThreadRules.cs" />
     <Compile Include="Tamagotchi.cs" />
+    <Compile Include="MyText.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
