@@ -39,6 +39,7 @@
     <Compile Include="ThreadRules.cs" />
     <Compile Include="Tamagotchi.cs" />
     <Compile Include="MyText.cs" />
+    <Compile Include="CubeWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
