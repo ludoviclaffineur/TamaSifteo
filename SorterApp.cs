@@ -42,7 +42,7 @@ namespace Sorter {
         wrapper.DrawCube();
       }
 
-       // ## Event Handlers ##
+      // ## Event Handlers ##
       // Objects in the Sifteo API (particularly BaseApp, CubeSet, and Cube)
       // fire events to notify an app of various happenings, including actions
       // that the player performs on the cubes.
