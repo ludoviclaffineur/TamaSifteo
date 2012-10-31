@@ -38,6 +38,12 @@
     <Compile Include="OSC.cs" />
     <Compile Include="ThreadRules.cs" />
     <Compile Include="Tamagotchi.cs" />
+    <Compile Include="CubeWrapper.cs" />
+    <Compile Include="MyText.cs" />
+    <Compile Include="RulesTama.cs" />
+    <Compile Include="ObjNomVal.cs" />
+    <Compile Include="RulesObj.cs" />
+    <Compile Include="InteracObj.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

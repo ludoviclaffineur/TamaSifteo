@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sifteo;
+using System.Threading;
 using _Sorter;
 
 namespace Sorter {
@@ -24,12 +25,22 @@ namespace Sorter {
 
     public List<CubeWrapper> mWrappers = new List<CubeWrapper>();
     public Random mRandom = new Random();
-
+	public ThreadRules threadHandle ;
     // Here we initialize our app.
     public override void Setup() {
-	  int i =0;		
-      
+	  
+			// On crée notre 'manipulateur' de thread en y passant un 
+			// paramètre classique
+			threadHandle = new ThreadRules();
+			
+			// On crée notre thread en y donnant comme méthode boucle, une
+			// méthode membre de notre manipulateur
+			Thread t = new Thread(new ThreadStart(threadHandle.ThreadLoop));
 
+
+
+	int i =0;		
+      
       // Loop through all the cubes and set them up.
       foreach (Cube cube in CubeSet) {
 
@@ -60,6 +71,8 @@ namespace Sorter {
       // of the time you will find the CubeSet-level events to be more useful.)
       CubeSet.NeighborAddEvent += OnNeighborAdd;
       CubeSet.NeighborRemoveEvent += OnNeighborRemove;
+	  // La méthode ThreadLoop de l'objet threadHandle est appelée, et myParam est donc accessible!
+    	t.Start();
     }
 
     // ## Neighbor Add ##
