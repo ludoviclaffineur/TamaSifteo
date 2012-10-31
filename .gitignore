@@ -6,3 +6,8 @@ obj
 *.userprefs
 # mstest test results
 TestResults
+<<<<<<< HEAD
+=======
+.userprefs
+.csproj
+>>>>>>> 77577a5c0f74d88ae4dd86ddd28ceb69e383abe6
