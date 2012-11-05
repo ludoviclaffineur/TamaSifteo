@@ -2,7 +2,6 @@
 bin
 obj
 
-# mstest test results
-TestResults
-*.userprefs
 *.csproj
+*.userprefs
+
