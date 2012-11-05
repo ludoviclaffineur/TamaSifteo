@@ -28,7 +28,7 @@ namespace Sorter {
     // Here we initialize our app.
     public override void Setup() {
 	  int i =0;		
-      
+	  //Log.Debug("YOUOOOOUUUUPS");
 
       // Loop through all the cubes and set them up.
       foreach (Cube cube in CubeSet) {

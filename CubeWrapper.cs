@@ -21,6 +21,9 @@ namespace _Sorter
 		public int mYval=0;
 		public static int selectedColor;
 		public myText mText = new myText();
+
+		int mSpriteIndex;
+
 		// This flag tells the wrapper to redraw the current image on the cube. (See Tick, below).
 		public bool mNeedDraw = false;
 		
@@ -112,10 +115,9 @@ namespace _Sorter
 		private void OnShakeStarted(Cube cube) {
 			Log.Debug("Shake start");
 			if (mCubeType ==0){
-				selectedColor = mApp.mRandom.Next(256);
-				OSC MessageOSC = new OSC ("127.0.0.1",65000);
-				MessageOSC.sendMsg("/sifteo",mCubeType,selectedColor);
+				mSpriteIndex = 1;
 			}
+			mNeedDraw = true;
 			
 		}
 		
@@ -128,7 +130,8 @@ namespace _Sorter
 			Log.Debug ("Shake stop: {0}", duration);
 			mRotation = 0;
 			mNeedDraw = true;
-			
+			mSpriteIndex = 0;
+
 			
 		}
 		
@@ -191,59 +194,28 @@ namespace _Sorter
 		// This method draws the current image to the cube's display. The
 		// Cube.Image method has a lot of arguments, but many of them are optional
 		// and have reasonable default values.
-		public void DrawCube() {
+		public void DrawCube ()
+		{
 			int x;
 			int y;
 			int tempColor = 0;
 			Color color;
-			if (mCubeType == 0){// color display(0) 
-				
-				color = new Color(selectedColor);
-				mCube.FillScreen(color);
-				
-				
-			}
-			else if (mCubeType == 1){// color selector(1),
-				// Clear off whatever was previously on the display before drawing the new image.
-				mCube.FillScreen(Color.Black);
-				color = new Color(0,182,0);
-				
-				mCube.FillRect(color,0,58,16,16);
-				
-				color = new	Color(255,0,0);		
-				mText.printChar(mCube, 'R', 25, 30, color);
-				
-				color = new Color(0,255,0);	
-				mText.printChar(mCube, 'G', 25, 60, color);
-				
-				color = new Color(0,0,255);		
-				mText.printChar(mCube, 'B', 25, 90, color);	
-				
-				R = (int)selectedColor >> 5 & 0x07;//Red bits are 3msb of x 
-				R = (int)(R *36.43);
-				mText.setText(	R.ToString());
-				mText.setStringOrig(45,30);
-				mText.writeText(mCube);
-				G = ((int)selectedColor >> 2) & 0x07;//Green bits are 2 msbs of y + lsb of x
-				G = (int)(G *36.43);
-				mText.setText(	G.ToString());
-				mText.setStringOrig(45,60);
-				mText.writeText(mCube);		
-				B = (int)selectedColor & 0x03;// blue bits are 2lsb of y
-				B = (int)(B *85);
-				mText.setText(	B.ToString());
-				mText.setStringOrig(45,90);
-				mText.writeText(mCube);	
+			Color bgColor = new Color(36, 182, 255);
+			if (mCubeType == 0) {// color display(0) 
+				mCube.FillScreen(bgColor);
+				mCube.Image("buddy", 40, 24, 0, mSpriteIndex* 48, 32, 48, 1, 0);
 				
 				
-				Log.Debug("R = {0}, G = {1}, B = {2}",R,G,B);		
+			} else if (mCubeType == 1) {// color selector(1),
+					
+				mCube.FillScreen(bgColor);
+				mCube.Image("tree", 40, 24, 0, mSpriteIndex* 48, 32, 48, 1, 0);
+
 				
 				
-				
-			} 
-			else if (mCubeType ==2){// color Palette(2)
-				for (x=0; x<16; x++){
-					for(y=0; y<16; y++){
+			} else if (mCubeType == 2) {// color Palette(2)
+				for (x=0; x<16; x++) {
+					for (y=0; y<16; y++) {
 						R = x >> 1;//Red bits are 3msb of x 
 						G = (y >> 2) | ((x << 3) & 0x4);//Green bits are 2 msbs of y + lsb of x
 						B = y & 0x03;// blue bits are 2lsb of y
@@ -251,24 +223,24 @@ namespace _Sorter
 						
 						tempColor = x << 4 | y; 		
 						
-						color  = new Color(tempColor);
-						mCube.FillRect(color,x*8,y*8,8,8);
+						color = new Color (tempColor);
+						mCube.FillRect (color, x * 8, y * 8, 8, 8);
 						
 						//draw marker on selected color
-						if (tempColor == selectedColor){
+						if (tempColor == selectedColor) {
 							tempColor = ~tempColor & 0xF;
 							mXval = x;
 							mYval = y;
 							
-							color  = new Color(tempColor);
-							mCube.FillRect(color,x*8,y*8,8,3); //draw complement of selected color as marker
+							color = new Color (tempColor);
+							mCube.FillRect (color, x * 8, y * 8, 8, 3); //draw complement of selected color as marker
 						}
 						
 					}
 					
 				}
 				
-			}
+			} 
 			
 			
 			
