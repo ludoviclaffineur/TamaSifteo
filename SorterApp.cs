@@ -59,7 +59,7 @@ namespace Sorter
 				wrapper.mCubeType = i; //set each cube as a cube type 
 				i++;
 				mWrappers.Add (wrapper);
-				wrapper.DrawCube ();
+				wrapper.DrawCube();
 			}
 
 			// ## Event Handlers ##
