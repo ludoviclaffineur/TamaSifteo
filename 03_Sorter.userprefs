@@ -1,9 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SorterApp.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CubeWrapper.cs">
     <Files>
       <File FileName="Bootstrap.cs" Line="1" Column="1" />
-      <File FileName="SorterApp.cs" Line="75" Column="5" />
+      <File FileName="SorterApp.cs" Line="20" Column="15" />
+      <File FileName="ThreadRules.cs" Line="12" Column="18" />
+      <File FileName="CubeWrapper.cs" Line="216" Column="34" />
+      <File FileName="MyText.cs" Line="1" Column="1" />
+      <File FileName="InteracObj.cs" Line="1" Column="1" />
+      <File FileName="Tamagotchi.cs" Line="21" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

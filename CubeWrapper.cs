@@ -17,6 +17,8 @@ namespace _Sorter
 		public int R;  //red
 		public int G;  //green
 		public int B;  //blue
+		public int activite_index=0;
+		public int nourriture_index=0;
 		public int mXval=0;
 		public int mYval=0;
 		public static int selectedColor;
@@ -112,10 +114,14 @@ namespace _Sorter
 		// as its internal accelerometer goes around and around. If your game wants
 		// to treat shaking separately from tilting or flipping, you need to add
 		// logic to filter events appropriately.
-		private void OnShakeStarted(Cube cube) {
-			Log.Debug("Shake start");
-			if (mCubeType ==0){
+		private void OnShakeStarted (Cube cube)
+		{
+			Log.Debug ("Shake start");
+			if (mCubeType == 0) {
 				mSpriteIndex = 1;
+			}
+			if (mCubeType == 1) {
+
 			}
 			mNeedDraw = true;
 			
@@ -196,10 +202,7 @@ namespace _Sorter
 		// and have reasonable default values.
 		public void DrawCube ()
 		{
-			int x;
-			int y;
-			int tempColor = 0;
-			Color color;
+
 			Color bgColor = new Color(36, 182, 255);
 			if (mCubeType == 0) {// color display(0) 
 				mCube.FillScreen(bgColor);
@@ -209,37 +212,14 @@ namespace _Sorter
 			} else if (mCubeType == 1) {// color selector(1),
 					
 				mCube.FillScreen(bgColor);
-				mCube.Image("tree", 40, 24, 0, mSpriteIndex* 48, 32, 48, 1, 0);
+				mCube.Image("tree", 0, 0, 0, mSpriteIndex* 48, 32, 48, 1, 0);
 
 				
 				
 			} else if (mCubeType == 2) {// color Palette(2)
-				for (x=0; x<16; x++) {
-					for (y=0; y<16; y++) {
-						R = x >> 1;//Red bits are 3msb of x 
-						G = (y >> 2) | ((x << 3) & 0x4);//Green bits are 2 msbs of y + lsb of x
-						B = y & 0x03;// blue bits are 2lsb of y
-						//Log.Debug("R = {0}, G = {1}, B = {2}, x = {3}, y = {4}",R,G,B,x,y);
-						
-						tempColor = x << 4 | y; 		
-						
-						color = new Color (tempColor);
-						mCube.FillRect (color, x * 8, y * 8, 8, 8);
-						
-						//draw marker on selected color
-						if (tempColor == selectedColor) {
-							tempColor = ~tempColor & 0xF;
-							mXval = x;
-							mYval = y;
-							
-							color = new Color (tempColor);
-							mCube.FillRect (color, x * 8, y * 8, 8, 3); //draw complement of selected color as marker
-						}
-						
-					}
-					
-				}
-				
+
+				mCube.FillScreen(bgColor);
+				mCube.Image("hamburger", 5, 5, 0, mSpriteIndex* 48, 100, 100, 1, 0);
 			} 
 			
 			

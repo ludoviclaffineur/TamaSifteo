@@ -25,6 +25,8 @@ namespace Sorter
 		public List<CubeWrapper> mWrappers = new List<CubeWrapper> ();
 		public Random mRandom = new Random ();
 		public ThreadRules threadHandle ;
+		public string [] Nourritures = {"hamburger","fruit","legume", "soda", "viande", "glace","cafe", "alcool", "eau"};
+		public string [] Activites = {"parc","culture","boite_de_nuit","cinema","sdb"};
 		// Here we initialize our app.
 		public override void Setup ()
 		{
@@ -99,31 +101,20 @@ namespace Sorter
 		{
 			Log.Debug ("Neighbor add: {0}.{1} <-> {2}.{3}", cube1.UniqueId, side1, cube2.UniqueId, side2);
 
-			CubeWrapper wrapper = (CubeWrapper)cube1.userData;
-			if (wrapper != null) {
-				// Here we set our wrapper's rotation value so that the image gets
-				// drawn with its top side pointing towards the neighbor cube.
-				//
-				// Cube.Side is an enumeration (TOP, LEFT, BOTTOM, RIGHT, NONE). The
-				// values of the enumeration can be cast to integers by counting
-				// counterclockwise:
-				//
-				// * TOP = 0
-				// * LEFT = 1
-				// * BOTTOM = 2
-				// * RIGHT = 3
-				// * NONE = 4
-				//wrapper.
-				wrapper.onCubeAdd (cube1, side1);
-				wrapper.mRotation = (int)side1;
-				wrapper.mNeedDraw = true;
-			}
+			CubeWrapper wrapper1 = (CubeWrapper)cube1.userData;
 
-			wrapper = (CubeWrapper)cube2.userData;
-			if (wrapper != null) {
-				wrapper.onCubeAdd (cube2, side2);
-				wrapper.mRotation = (int)side2;
-				wrapper.mNeedDraw = true;
+			CubeWrapper wrapper2 = (CubeWrapper)cube2.userData;
+			if ((wrapper1.mCubeType == 0 && wrapper2.mCubeType == 2) || (wrapper1.mCubeType == 2 && wrapper2.mCubeType == 0)) {
+				string nourriture_type;
+				if (wrapper1.mCubeType==2){
+					nourriture_type = Nourritures[wrapper1.nourriture_index];
+				}
+				else{
+					nourriture_type = Nourritures[wrapper2.nourriture_index];
+				}
+				Nourriture nourri = new Nourriture(nourriture_type);
+				nourri.setParameters(threadHandle.TamaRT);
+				Log.Debug ("YOUUUUPS");
 			}
 
 		}
