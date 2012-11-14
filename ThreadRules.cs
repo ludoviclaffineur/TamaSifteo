@@ -208,7 +208,7 @@ namespace _Sorter
 			{
 				testing = DateTime.Now;
 				
-				if (testing.Subtract(looping).Seconds > 5)
+				if (testing.Subtract(looping).Seconds > 1)
 				{
 					Console.WriteLine("--------------");
 					looping = DateTime.Now;
@@ -228,7 +228,6 @@ namespace _Sorter
 								{
 									
 									TamaRulesRT[i].ExplicationString = RulesList[x].ExplicationString;
-									Console.WriteLine("Explication : "+RulesList[x].ExplicationString);
 									
 								}
 								
@@ -242,11 +241,24 @@ namespace _Sorter
 							   TamaRulesRT[i].ExplicationString.Equals(ObjNomValK[w].NomString)){
 								
 								K = ObjNomValK[w].ValeurDouble;
+								
 								Console.WriteLine("Valeur k :"+K);
 								
 							}
 							
 						}
+						
+						Console.WriteLine("Nom : " + TamaRulesRT[i].NomString);
+						Console.WriteLine("Num : " + TamaRulesRT[i].ValeurDouble);
+						
+						if (TamaRulesRT[i].NomString.Equals("Age")) { 
+							
+							
+							TamaRulesRT[i].ValeurDouble++;
+							
+						}
+						
+						
 						
 						for (int ww = 0; ww < ObjInteracList.Count; ww++)
 						{
@@ -264,11 +276,8 @@ namespace _Sorter
 											{
 												if (TamaRulesRT[xox].NomString.Equals(ObjInteracList[ww].ResultString[xo].ToString()))
 												{
-													Console.WriteLine("Changement : "+ObjInteracList[ww].ResultString[xo]);
 													
-													Console.WriteLine("Plombage : "+ObjInteracList[ww].ProportionString[xo] * K);
-													
-													Double checkValeur = TamaRulesRT[xox].ValeurDouble + Double.Parse(ObjInteracList[ww].ProportionString[xo].ToString()) * K;
+													Double checkValeur = checkValeur = TamaRulesRT[xox].ValeurDouble + Double.Parse(ObjInteracList[ww].ProportionString[xo].ToString()) * K;
 													
 													if (checkValeur <= 0)
 													{
@@ -281,10 +290,8 @@ namespace _Sorter
 													else if (checkValeur < 100 && checkValeur > 0)
 													{
 														TamaRulesRT[xox].ValeurDouble += Double.Parse(ObjInteracList[ww].ProportionString[xo].ToString()) * K;
+														
 													}
-													
-													Console.WriteLine("Valeur*K : "+TamaRulesRT[xox].ValeurDouble);
-													
 													
 												}
 											}
@@ -302,6 +309,7 @@ namespace _Sorter
 					}
 					
 				}
+				
 				tama.TamaRulesTabRT = TamaRulesRT;
 				
 				//break;
