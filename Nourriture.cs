@@ -23,7 +23,7 @@ namespace _Sorter
 				break;
 			case "fruit":
 				tama.SanteDouble+=20;
-				tama.FaimDouble+=20;
+				tama.FaimDouble-=20;
 				tama.HumeurDouble+=20;
 				break;
 			case "legume":
