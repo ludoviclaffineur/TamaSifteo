@@ -1,0 +1,16 @@
+alcool
+boite_de_nuit
+buddy
+cafe
+cinema
+culture
+eau
+fruit
+glace
+hamburger
+legume
+parc
+sdb
+soda
+tree
+viande

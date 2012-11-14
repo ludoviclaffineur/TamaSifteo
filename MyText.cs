@@ -7,13 +7,13 @@ namespace _Sorter
 	{ 
 		private int mX = 0;
 		private int mY = 20;
-		private int mTextH = 20;
-		private int mTextW = 10;
+		private int mTextH = 14;
+		private int mTextW = 7;
 		private bool mExtend = false; //extend allows the text string to be wrote across many cubes
 		private bool mWrap = false;   //wrap allows the text to wrap across the screen if extend is 
 		//enabled wrap will only wrap after reaching the end of the cubes
 		private string mString = "0123456789";
-		private Color mColor;	
+		private Color mColor = new Color(0,0,0);	
 		//writes/draws text to cube
 		
 		public void writeText(Cube cube){

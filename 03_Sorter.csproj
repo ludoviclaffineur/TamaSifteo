@@ -44,6 +44,8 @@
     <Compile Include="ObjNomVal.cs" />
     <Compile Include="RulesObj.cs" />
     <Compile Include="InteracObj.cs" />
+    <Compile Include="Nourriture.cs" />
+    <Compile Include="Activite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
