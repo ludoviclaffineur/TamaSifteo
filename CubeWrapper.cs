@@ -1,6 +1,7 @@
 using System;
 using Sorter;
 using Sifteo;
+using System.Collections;
 
 namespace _Sorter
 {
@@ -21,9 +22,13 @@ namespace _Sorter
 		public int nourriture_index=0;
 		public int mXval=0;
 		public int mYval=0;
+		public string [] Nourritures = {"hamburger","fruit","legume", "soda", "viande", "glace","cafe", "alcool", "eau"};
+		public string [] Activites = {"parc","culture","boite_de_nuit","cinema","sdb"};
 		public static int selectedColor;
+		public Tamagotchi tama;
 		public myText mText = new myText();
-
+		public ArrayList NourrituresRecues;
+		public ArrayList ActivitesEnCours;
 		int mSpriteIndex;
 
 		// This flag tells the wrapper to redraw the current image on the cube. (See Tick, below).
@@ -42,6 +47,8 @@ namespace _Sorter
 			mCube.ShakeStartedEvent += OnShakeStarted;
 			mCube.ShakeStoppedEvent += OnShakeStopped;
 			mCube.FlipEvent += OnFlip;
+			NourrituresRecues = new ArrayList();
+			ActivitesEnCours = new ArrayList();
 		}
 		
 		
@@ -121,7 +128,10 @@ namespace _Sorter
 				mSpriteIndex = 1;
 			}
 			if (mCubeType == 1) {
-
+				activite_index = (activite_index + 1) % 5;
+			}
+			if (mCubeType == 2) {
+				nourriture_index = (nourriture_index + 1) % 9;
 			}
 			mNeedDraw = true;
 			
@@ -193,8 +203,10 @@ namespace _Sorter
 				}
 			}
 			
-		}		
-		
+		}
+
+	
+
 		
 		// ## Cube.Image ##
 		// This method draws the current image to the cube's display. The
@@ -203,24 +215,44 @@ namespace _Sorter
 		public void DrawCube ()
 		{
 
-			Color bgColor = new Color(36, 182, 255);
+			Color bgColor = new Color (36, 182, 255);
 			if (mCubeType == 0) {// color display(0) 
-				mCube.FillScreen(bgColor);
-				mCube.Image("buddy", 40, 24, 0, mSpriteIndex* 48, 32, 48, 1, 0);
+				mCube.FillScreen (bgColor);
+				mCube.Image ("buddy", 40, 24, 0, mSpriteIndex * 48, 32, 48, 1, 0);
 				
 				
 			} else if (mCubeType == 1) {// color selector(1),
 					
-				mCube.FillScreen(bgColor);
-				mCube.Image("tree", 0, 0, 0, mSpriteIndex* 48, 32, 48, 1, 0);
+				mCube.FillScreen (bgColor);
+				mCube.Image (Activites [activite_index], 0, 0, 0, mSpriteIndex * 48, 110, 110, 1, 0);
 
 				
 				
 			} else if (mCubeType == 2) {// color Palette(2)
 
+				mCube.FillScreen (bgColor);
+				mCube.Image (Nourritures [nourriture_index], 5, 5, 0, mSpriteIndex * 48, 110, 110, 1, 0);
+			} else if (mCubeType == 3) {
 				mCube.FillScreen(bgColor);
-				mCube.Image("hamburger", 5, 5, 0, mSpriteIndex* 48, 100, 100, 1, 0);
-			} 
+				mText.setText("SANTE "+ tama.SanteDouble);
+				mText.setStringOrig(2,16);
+				mText.writeText(mCube);	
+				mText.setText("HUMEUR "+ tama.HumeurDouble);
+				mText.setStringOrig(2,32);
+				mText.writeText(mCube);
+				mText.setText("FAIM "+ tama.FaimDouble);
+				mText.setStringOrig(2,48);
+				mText.writeText(mCube);
+				mText.setText("INTEL "+ tama.IntelligenceDouble);
+				mText.setStringOrig(2,64);
+				mText.writeText(mCube);
+				mText.setText("PROPR "+ tama.PropreteDouble);
+				mText.setStringOrig(2,80);
+				mText.writeText(mCube);
+				mText.setText("AGE "+ tama.AgeDouble);
+				mText.setStringOrig(2,96);
+				mText.writeText(mCube);
+			}
 			
 			
 			
@@ -239,8 +271,10 @@ namespace _Sorter
 				mRotation = mApp.mRandom.Next(4);
 				foreach (CubeWrapper wrapper in mApp.mWrappers) {
 					wrapper.mNeedDraw = true;
+
 				}
 			}
+
 			
 			// If anyone has raised the mNeedDraw flag, redraw the image on the cube.
 			if (mNeedDraw) {

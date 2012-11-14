@@ -59,6 +59,7 @@ namespace Sorter
 				// to bundle a cube with extra information and behavior.
 				CubeWrapper wrapper = new CubeWrapper (this, cube);
 				wrapper.mCubeType = i; //set each cube as a cube type 
+				wrapper.tama = tama;
 				i++;
 				mWrappers.Add (wrapper);
 				wrapper.DrawCube();
@@ -104,6 +105,7 @@ namespace Sorter
 			CubeWrapper wrapper1 = (CubeWrapper)cube1.userData;
 
 			CubeWrapper wrapper2 = (CubeWrapper)cube2.userData;
+			//Nourriture touche le tama
 			if ((wrapper1.mCubeType == 0 && wrapper2.mCubeType == 2) || (wrapper1.mCubeType == 2 && wrapper2.mCubeType == 0)) {
 				string nourriture_type;
 				if (wrapper1.mCubeType==2){
@@ -114,9 +116,23 @@ namespace Sorter
 				}
 				Nourriture nourri = new Nourriture(nourriture_type);
 				nourri.setParameters(threadHandle.TamaRT);
-				Log.Debug ("YOUUUUPS");
-			}
+				Log.Debug ("Mange : {0}", nourriture_type);
 
+			}
+			//Activité touche le tama
+			if ((wrapper1.mCubeType == 0 && wrapper2.mCubeType == 1) || (wrapper1.mCubeType == 1 && wrapper2.mCubeType == 0)) {
+				string activite_type;
+				if (wrapper1.mCubeType==1){
+					activite_type = Activites[wrapper1.activite_index];
+				}
+				else{
+					activite_type = Activites[wrapper2.activite_index];
+				}
+				Activite acti = new Activite(activite_type);
+				acti.setParameters(threadHandle.TamaRT);
+				Log.Debug ("Activité : {0}", activite_type);
+				
+			}
 		}
 
 		// ## Neighbor Remove ##
@@ -151,6 +167,7 @@ namespace Sorter
 		{
 			foreach (CubeWrapper wrapper in mWrappers) {
 				wrapper.Tick ();
+
 			}
 		}
 

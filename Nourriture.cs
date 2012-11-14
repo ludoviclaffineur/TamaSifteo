@@ -18,7 +18,7 @@ namespace _Sorter
 				tama.SanteDouble -= 10;
 				tama.HumeurDouble += 20;
 				tama.FormeDouble -= 20;
-				tama.FaimDouble -= 30;
+				tama.FaimDouble -= 40;
 
 				break;
 			case "fruit":
@@ -27,34 +27,34 @@ namespace _Sorter
 				tama.HumeurDouble+=20;
 				break;
 			case "legume":
-				tama.SanteDouble++;
-				tama.FaimDouble--;
-				tama.HumeurDouble++;
+				tama.SanteDouble+=20;
+				tama.FaimDouble-=20;
+				tama.HumeurDouble+=20;
 				break;
 			case "viande":
-				tama.SanteDouble += 2;
-				tama.FaimDouble += 2;
+				tama.SanteDouble += 40;
+				tama.FaimDouble += 40;
 				break;
 			case "glace":
-				tama.SanteDouble--;
-				tama.FaimDouble--;
-				tama.HumeurDouble += 2;
+				tama.SanteDouble-=20;
+				tama.FaimDouble-=20;
+				tama.HumeurDouble += 40;
 				break;
 			case "cafe":
-				tama.SanteDouble -= 2;
-				tama.FormeDouble += 2;
+				tama.SanteDouble -= 20;
+				tama.FormeDouble += 40;
 				break;
 			case "soda":
-				tama.SanteDouble -= 2;
-				tama.FormeDouble++;
+				tama.SanteDouble -= 20;
+				tama.FormeDouble+=10;
 				break;
 			case "alcool":
 				tama.SanteDouble -= 2;
 				tama.FormeDouble -= 2;
 				break;
 			case "eau":
-				tama.SanteDouble++;
-				tama.FormeDouble++;
+				tama.SanteDouble+=20;
+				tama.FormeDouble+=20;
 				break;
 			}
 		}
