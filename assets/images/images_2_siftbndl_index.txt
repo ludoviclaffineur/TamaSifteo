@@ -9,6 +9,7 @@ fruit
 glace
 hamburger
 legume
+lit
 parc
 sdb
 soda

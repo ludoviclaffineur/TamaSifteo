@@ -26,7 +26,7 @@ namespace Sorter
 		public Random mRandom = new Random ();
 		public ThreadRules threadHandle ;
 		public string [] Nourritures = {"hamburger","fruit","legume", "soda", "viande", "glace","cafe", "alcool", "eau"};
-		public string [] Activites = {"parc","culture","boite_de_nuit","cinema","sdb"};
+		public string [] Activites = {"parc","culture","boite_de_nuit","cinema","sdb","lit"};
 		// Here we initialize our app.
 		public override void Setup ()
 		{

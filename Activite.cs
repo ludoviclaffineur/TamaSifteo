@@ -13,31 +13,37 @@ namespace _Sorter
 			switch (name)
 			{
 			case "parc": 
-				tama.FaimDouble += 2;
-				tama.FormeDouble -=2;
-				tama.SanteDouble +=2;
-				tama.PropreteDouble -=1;
-				tama.HumeurDouble+=2;
+				tama.FaimDouble += 20;
+				tama.FormeDouble -=20;
+				tama.SanteDouble +=20;
+				tama.PropreteDouble -=10;
+				tama.HumeurDouble+=20;
 				break;
 			case "culture":
-				tama.HumeurDouble++;
-				tama.IntelligenceDouble +=2;
-				tama.SanteDouble--;
-				tama.FaimDouble+=2;
+				tama.HumeurDouble+=10;
+				tama.IntelligenceDouble +=20;
+				tama.SanteDouble-=20;
+				tama.FaimDouble+=20;
 				break;
 			case "boite_de_nuit":
+				tama.FormeDouble-=30;
+				tama.PropreteDouble-=15;
+				tama.HumeurDouble +=10;
 				break;
 			case "cinema":
-				tama.SanteDouble--;
-				tama.FormeDouble++;
-				tama.HumeurDouble+=2;
-				tama.IntelligenceDouble -=2;
-				tama.FaimDouble ++;
+				tama.SanteDouble-=10;
+				tama.FormeDouble+=10;
+				tama.HumeurDouble+=20;
+				tama.IntelligenceDouble -=20;
+				tama.FaimDouble +=10;
 
 				break;
 			case "sdb":
-				tama.PropreteDouble+=2;
-				tama.HumeurDouble++;
+				tama.PropreteDouble+=20;
+				tama.HumeurDouble+=20;
+				break;
+			case "lit":
+				tama.FormeDouble+=30;
 				break;
 			}
 		}

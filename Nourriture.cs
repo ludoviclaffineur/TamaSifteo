@@ -19,7 +19,6 @@ namespace _Sorter
 				tama.HumeurDouble += 20;
 				tama.FormeDouble -= 20;
 				tama.FaimDouble -= 40;
-
 				break;
 			case "fruit":
 				tama.SanteDouble+=20;
@@ -33,7 +32,7 @@ namespace _Sorter
 				break;
 			case "viande":
 				tama.SanteDouble += 40;
-				tama.FaimDouble += 40;
+				tama.FaimDouble -= 40;
 				break;
 			case "glace":
 				tama.SanteDouble-=20;
@@ -49,8 +48,8 @@ namespace _Sorter
 				tama.FormeDouble+=10;
 				break;
 			case "alcool":
-				tama.SanteDouble -= 2;
-				tama.FormeDouble -= 2;
+				tama.SanteDouble -= 20;
+				tama.FormeDouble -= 20;
 				break;
 			case "eau":
 				tama.SanteDouble+=20;

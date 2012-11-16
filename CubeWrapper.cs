@@ -23,7 +23,7 @@ namespace _Sorter
 		public int mXval=0;
 		public int mYval=0;
 		public string [] Nourritures = {"hamburger","fruit","legume", "soda", "viande", "glace","cafe", "alcool", "eau"};
-		public string [] Activites = {"parc","culture","boite_de_nuit","cinema","sdb"};
+		public string [] Activites = {"parc","culture","boite_de_nuit","cinema","sdb","lit"};
 		public static int selectedColor;
 		public Tamagotchi tama;
 		public myText mText = new myText();
@@ -128,7 +128,7 @@ namespace _Sorter
 				mSpriteIndex = 1;
 			}
 			if (mCubeType == 1) {
-				activite_index = (activite_index + 1) % 5;
+				activite_index = (activite_index + 1) % 6;
 			}
 			if (mCubeType == 2) {
 				nourriture_index = (nourriture_index + 1) % 9;
@@ -234,23 +234,26 @@ namespace _Sorter
 				mCube.Image (Nourritures [nourriture_index], 5, 5, 0, mSpriteIndex * 48, 110, 110, 1, 0);
 			} else if (mCubeType == 3) {
 				mCube.FillScreen(bgColor);
-				mText.setText("SANTE "+ tama.SanteDouble);
+				mText.setText("SANTE "+ (int)tama.SanteDouble);
 				mText.setStringOrig(2,16);
 				mText.writeText(mCube);	
-				mText.setText("HUMEUR "+ tama.HumeurDouble);
+				mText.setText("HUMEUR "+ (int)tama.HumeurDouble);
 				mText.setStringOrig(2,32);
 				mText.writeText(mCube);
-				mText.setText("FAIM "+ tama.FaimDouble);
+				mText.setText("FAIM "+ (int)tama.FaimDouble);
 				mText.setStringOrig(2,48);
 				mText.writeText(mCube);
-				mText.setText("INTEL "+ tama.IntelligenceDouble);
+				mText.setText("INTEL "+ (int)tama.IntelligenceDouble);
 				mText.setStringOrig(2,64);
 				mText.writeText(mCube);
-				mText.setText("PROPR "+ tama.PropreteDouble);
+				mText.setText("PROPR "+ (int)tama.PropreteDouble);
 				mText.setStringOrig(2,80);
 				mText.writeText(mCube);
-				mText.setText("AGE "+ tama.AgeDouble);
+				mText.setText("AGE "+ (int)tama.AgeDouble);
 				mText.setStringOrig(2,96);
+				mText.writeText(mCube);
+				mText.setText("FORME "+ (int)tama.FormeDouble);
+				mText.setStringOrig(2,112);
 				mText.writeText(mCube);
 			}
 			

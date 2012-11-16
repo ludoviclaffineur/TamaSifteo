@@ -233,13 +233,19 @@ namespace _Sorter
 							TamaRulesRT [i].ValeurDouble++;
 							
 						}
+						if (TamaRulesRT [i].NomString.Equals ("Faim")) { 
+							
+							
+							TamaRulesRT [i].ValeurDouble+=5;
+							
+						}
 
 						if (TamaRulesRT [i].ValeurDouble <= 0) {
 							TamaRulesRT [i].ValeurDouble = 0.0;
 						} else if (TamaRulesRT [i].ValeurDouble >= 100) {
 							TamaRulesRT [i].ValeurDouble = 100.0;
 						}
-						
+
 						
 						for (int ww = 0; ww < ObjInteracList.Count; ww++) {
 							
