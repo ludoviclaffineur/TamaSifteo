@@ -190,6 +190,7 @@ namespace _Sorter
 				testing = DateTime.Now;
 				
 				if (testing.Subtract (looping).Seconds > 1) {
+					tama.TamaRulesTabRT = TamaRulesRT;
 					Console.WriteLine ("--------------");
 					looping = DateTime.Now;
 					for (int i = 0; i < TamaRulesRT.Length; i++) {
@@ -204,6 +205,8 @@ namespace _Sorter
 									|| (TamaRulesRT [i].ValeurDouble == RulesList [x].MaxInt16 && RulesList [x].EndofRulesBool == true)) {
 									
 									TamaRulesRT [i].ExplicationString = RulesList [x].ExplicationString;
+									tama.TamaRulesTabRT[i].ExplicationString=RulesList [x].ExplicationString;
+									//Console.WriteLine("BLABLA" + tama.TamaRulesTabRT[i].ExplicationString);
 									
 								}
 								
@@ -230,7 +233,7 @@ namespace _Sorter
 						if (TamaRulesRT [i].NomString.Equals ("Age")) { 
 							
 							
-							TamaRulesRT [i].ValeurDouble++;
+							TamaRulesRT [i].ValeurDouble+=0.2d;
 							
 						}
 						if (TamaRulesRT [i].NomString.Equals ("Faim")) { 
@@ -240,10 +243,10 @@ namespace _Sorter
 							
 						}
 
-						if (TamaRulesRT [i].ValeurDouble <= 0) {
-							TamaRulesRT [i].ValeurDouble = 0.0;
-						} else if (TamaRulesRT [i].ValeurDouble >= 100) {
-							TamaRulesRT [i].ValeurDouble = 100.0;
+						if (tama.TamaRulesTabRT [i].ValeurDouble <= 0) {
+							tama.TamaRulesTabRT [i].ValeurDouble = 0.0;
+						} else if (tama.TamaRulesTabRT [i].ValeurDouble >= 100) {
+							tama.TamaRulesTabRT [i].ValeurDouble = 100.0;
 						}
 
 						
@@ -287,7 +290,7 @@ namespace _Sorter
 					
 				}
 				
-				tama.TamaRulesTabRT = TamaRulesRT;
+
 				
 				//break;
 			}
