@@ -12,7 +12,6 @@ namespace _Sorter
 		Double age;
 		Double faim;
 		Double intelligence;
-		
 		public RulesTama[] TamaRulesTabRT
 		{
 			get { return TamaRulesTab; }

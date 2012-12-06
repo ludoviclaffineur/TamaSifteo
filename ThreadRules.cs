@@ -14,6 +14,8 @@ namespace _Sorter
 		List<RulesObj> RulesList;
 		List<ObjNomVal> ObjNomValK;
 		List<InteracObj> ObjInterac;
+		public List<CubeWrapper> CubeList;
+		public bool start = true;
 		Double K = 1;
 		
 		public Double KDouble {
@@ -179,14 +181,23 @@ namespace _Sorter
 			return result;
 			
 		}
-		
+
+		void RefreshCubes ()
+		{
+			foreach (CubeWrapper cube in CubeList) {
+				if (cube.mIndex == 0) {
+					cube.mNeedDraw = true;
+				}
+			}
+		}
+
 		// Méthode boucle du thread
 		public void ThreadLoop ()
 		{
 			DateTime testing;
 			looping = DateTime.Now;
 			
-			while (true) {
+			while (start) {
 				testing = DateTime.Now;
 				
 				if (testing.Subtract (looping).Seconds > 1) {
@@ -287,10 +298,10 @@ namespace _Sorter
 						
 						
 					}
-					
+					RefreshCubes();
 				}
 				
-
+				//RefreshCubes();
 				
 				//break;
 			}

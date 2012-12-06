@@ -29,7 +29,8 @@ namespace _Sorter
 		public myText mText = new myText();
 		public ArrayList NourrituresRecues;
 		public ArrayList ActivitesEnCours;
-		int mSpriteIndex;
+		public int mSpriteIndex;
+		public ThreadRules threadHandler;
 
 		// This flag tells the wrapper to redraw the current image on the cube. (See Tick, below).
 		public bool mNeedDraw = false;
@@ -216,11 +217,36 @@ namespace _Sorter
 		{
 
 			Color bgColor = new Color (36, 182, 255);
+			//Log.Debug (255 - (int)(tama.HumeurDouble / 100.0 * 255) + " " + (int)(tama.HumeurDouble / 100.0 * 255) + " " + 0);
+			Color bg2;
+			if (tama.HumeurDouble > 100) {
+				bg2 = new Color (0,255, 0);
+			} else {
+				bg2 = new Color (255 - (int)(tama.HumeurDouble / 100.0 * 255), (int)(tama.HumeurDouble / 100.0 * 255), 0);
+
+			}
 			if (mCubeType == 0) {// color display(0) 
-				mCube.FillScreen (bgColor);
-				mCube.Image ("buddy", 40, 24, 0, mSpriteIndex * 48, 32, 48, 1, 0);
-				
-				
+				if(tama.SanteDouble<=0){
+					mCube.FillScreen(bgColor);
+					mText.setText("GAME OVER");
+					mText.setStringOrig(2,16);
+					mText.writeText(mCube);
+					mText.setText("AGE : "+ (int)tama.AgeDouble);
+					mText.setStringOrig(10,45);
+					mText.writeText(mCube);
+					threadHandler.start=false;
+				}
+				else{
+					mCube.FillScreen (bg2);
+					mCube.Image ("buddy", 40, 24, 0, mSpriteIndex * 48, 32, 48, 1, 0);
+					mCube.FillRect(new Color(255,0,0),30,100,95,9);
+					mCube.FillRect(new Color(0,255,0),35,103,(int)(85*(tama.SanteDouble/100.0)),3);
+
+					mText.setText("V");
+					mText.setStringOrig(5,105);
+					mText.writeText(mCube);
+				}
+
 			} else if (mCubeType == 1) {// color selector(1),
 					
 				mCube.FillScreen (bgColor);
