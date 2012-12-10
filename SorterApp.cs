@@ -27,6 +27,7 @@ namespace Sorter
 		public ThreadRules threadHandle ;
 		public string [] Nourritures = {"hamburger","fruit","legume", "soda", "viande", "glace","cafe", "alcool", "eau"};
 		public string [] Activites = {"parc","culture","boite_de_nuit","cinema","sdb","lit"};
+		public Feeder feederTama;
 		// Here we initialize our app.
 		public override void Setup ()
 		{
@@ -49,6 +50,8 @@ namespace Sorter
 			tama.SanteDouble = 100;
 			threadHandle.TamaRT = tama;
 			threadHandle.TamaRulesRT = tama.TamaRulesTabRT;
+			threadHandle.CubeList=mWrappers;
+			feederTama = new Feeder(tama);
 			int i = 0;		
       
 			// Loop through all the cubes and set them up.
@@ -60,6 +63,7 @@ namespace Sorter
 				CubeWrapper wrapper = new CubeWrapper (this, cube);
 				wrapper.mCubeType = i; //set each cube as a cube type 
 				wrapper.tama = tama;
+				wrapper.threadHandler=threadHandle;
 				i++;
 				mWrappers.Add (wrapper);
 				wrapper.DrawCube();
@@ -110,12 +114,15 @@ namespace Sorter
 				string nourriture_type;
 				if (wrapper1.mCubeType==2){
 					nourriture_type = Nourritures[wrapper1.nourriture_index];
+					wrapper2.mSpriteIndex=1;
 				}
 				else{
+					wrapper1.mSpriteIndex=1;
 					nourriture_type = Nourritures[wrapper2.nourriture_index];
 				}
 				Nourriture nourri = new Nourriture(nourriture_type);
-				nourri.setParameters(threadHandle.TamaRT);
+				feederTama.add (nourri);
+	//			nourri.setParameters(threadHandle.TamaRT);
 				Log.Debug ("Mange : {0}", nourriture_type);
 
 			}
@@ -123,9 +130,11 @@ namespace Sorter
 			if ((wrapper1.mCubeType == 0 && wrapper2.mCubeType == 1) || (wrapper1.mCubeType == 1 && wrapper2.mCubeType == 0)) {
 				string activite_type;
 				if (wrapper1.mCubeType==1){
+					wrapper2.mSpriteIndex=1;
 					activite_type = Activites[wrapper1.activite_index];
 				}
 				else{
+					wrapper1.mSpriteIndex=1;
 					activite_type = Activites[wrapper2.activite_index];
 				}
 				Activite acti = new Activite(activite_type);
@@ -146,7 +155,14 @@ namespace Sorter
 		private void OnNeighborRemove (Cube cube1, Cube.Side side1, Cube cube2, Cube.Side side2)
 		{
 			Log.Debug ("Neighbor remove: {0}.{1} <-> {2}.{3}", cube1.UniqueId, side1, cube2.UniqueId, side2);
-
+			CubeWrapper wrapper1 = (CubeWrapper)cube1.userData;
+			
+			CubeWrapper wrapper2 = (CubeWrapper)cube2.userData;
+			if (wrapper1.mCubeType == 0) {
+				wrapper1.mSpriteIndex = 0;
+			} else {
+				wrapper2.mSpriteIndex=0;
+			}
 			CubeWrapper wrapper = (CubeWrapper)cube1.userData;
 			if (wrapper != null) {
 				wrapper.mScale = 1;
