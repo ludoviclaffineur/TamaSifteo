@@ -93,91 +93,62 @@ namespace _Sorter
 					ObjNomValKList.Add (nv);
 				}
 			}
+			nodeList = node.SelectNodes("interac");
 			
-			nodeList = node.SelectNodes ("interac");
-			
-			for (int i = 0; i < nodeList.Count; i++) {
-				for (int w = 0; w < nodeList[i].ChildNodes.Count; w++) {
-					InteracObj oi = new InteracObj ();
+			for (int i = 0; i < nodeList.Count; i++)
+			{
+				for (int w = 0; w < nodeList[i].ChildNodes.Count; w++)
+				{
+					InteracObj oi = new InteracObj();
 					
-					oi.CategorieString = nodeList [i].Attributes [0].Value;
-					oi.TypeString = this.SplitInterac (nodeList [i].ChildNodes [w].Attributes [0].Value);
-					oi.ResultString = this.SplitInterac (nodeList [i].ChildNodes [w].Attributes [1].Value);
-					oi.ProportionString = this.TranslateProportion (this.SplitInterac (nodeList [i].ChildNodes [w].Attributes [2].Value));
+					oi.CategorieString = nodeList[i].Attributes[0].Value;
 					
-					ObjInteracList.Add (oi);
+					oi.TypeString = nodeList[i].ChildNodes[w].Attributes[0].Value;
+					oi.ResultString = nodeList[i].ChildNodes[w].Attributes[1].Value;
+					oi.ProportionString = this.TranslateProportion(nodeList[i].ChildNodes[w].Attributes[2].Value);
+					ObjInteracList.Add(oi);
+					
 				}
 			}
 			
 			
 		}
 		
-		private Int16[] TranslateProportion (List<String> propor)
+		private Int16 TranslateProportion(String propor)
 		{
-			Int16[] result = new Int16[propor.Count];
+			Int16 result = 0;
 			
-			for (int i = 0; i < propor.Count; i++) {
-				
-				switch (propor [i].ToString ()) {
-				case "-":
-					result [i] = -1;
-					break;
-				case "--":
-					result [i] = -2;
-					break;
-				case "---":
-					result [i] = -3;
-					break;
-				case "----":
-					result [i] = -4;
-					break;
-				case "+":
-					result [i] = 1;
-					break;
-				case "++":
-					result [i] = 2;
-					break;
-				case "+++":
-					result [i] = 3;
-					break;
-				case "++++":
-					result [i] = 4;
-					break;
-				default:
-					break;
-				}
-				
+			
+			switch (propor)
+			{
+			case "-":
+				result = -1;
+				break;
+			case "--":
+				result = -2;
+				break;
+			case "---":
+				result = -3;
+				break;
+			case "----":
+				result = -4;
+				break;
+			case "+":
+				result = 1;
+				break;
+			case "++":
+				result = 2;
+				break;
+			case "+++":
+				result = 3;
+				break;
+			case "++++":
+				result = 4;
+				break;
+			default:
+				break;
 			}
-			
-			return result;
-			
-		}
-		
-		private List<String> SplitInterac (String interac)
-		{
-			
-			List<String> result = new List<String> ();
-			
-			int incr = 0;
-			for (int i = 0; i < interac.Length; i++) {
-				
-				if (interac [i].Equals ('/')) {
-					
-					result.Add (interac.Substring (incr, i - incr));
-					incr = i + 1;
-					
-				}
-				
-			}
-			
-			if (incr == 0) {
-				result.Add (interac);
-			} else if (incr > 0) {
-				
-				result.Add (interac.Substring (incr, interac.Length - incr));
-				
-			}          
-			
+
 			return result;
 			
 		}
@@ -264,32 +235,29 @@ namespace _Sorter
 						for (int ww = 0; ww < ObjInteracList.Count; ww++) {
 							
 							if (ObjInteracList [ww].CategorieString.Equals (TamaRulesRT [i].NomString)) {
-								
-								for (int oo = 0; oo < ObjInteracList[ww].TypeString.Count; oo++) {
-									
-									if (ObjInteracList [ww].TypeString [oo].Equals (TamaRulesRT [i].ExplicationString)) {
+
+									if (ObjInteracList [ww].TypeString.Equals (TamaRulesRT [i].ExplicationString)) {
 										
-										for (int xo = 0; xo < ObjInteracList[ww].ResultString.Count; xo++) {
 											for (int xox = 0; xox < TamaRulesRT.Length; xox++) {
-												if (TamaRulesRT [xox].NomString.Equals (ObjInteracList [ww].ResultString [xo].ToString ())) {
+												if (TamaRulesRT [xox].NomString.Equals (ObjInteracList [ww].ResultString.ToString ())) {
 													
-													Double checkValeur = TamaRulesRT [xox].ValeurDouble + Double.Parse (ObjInteracList [ww].ProportionString [xo].ToString ()) * K;
+													Double checkValeur = TamaRulesRT [xox].ValeurDouble + Double.Parse (ObjInteracList [ww].ProportionString.ToString ()) * K;
 													
 													if (checkValeur <= 0) {
 														TamaRulesRT [xox].ValeurDouble = 0.0;
 													} else if (checkValeur >= 100) {
 														TamaRulesRT [xox].ValeurDouble = 100.0;
 													} else if (checkValeur < 100 && checkValeur > 0) {
-														TamaRulesRT [xox].ValeurDouble += Double.Parse (ObjInteracList [ww].ProportionString [xo].ToString ()) * K;
+														TamaRulesRT [xox].ValeurDouble += Double.Parse (ObjInteracList [ww].ProportionString.ToString ()) * K;
 														
 													}
 													
 												}
 											}
-										}
+
 									}
 									
-								}
+								
 								
 								
 							}
