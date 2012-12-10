@@ -6,37 +6,37 @@ namespace _Sorter
 	public class InteracObj
 	{
 		String categorie;
-		List<String> type;
-		List<String> result;
-		Int16[] proportion;
+		String type;
+		String result;
+		Int16 proportion;
 		
-		public Int16[] ProportionString
+		public String TypeString
 		{
-			get { return proportion; }
-			set { proportion = value; }
+			get { return type; }
+			set { type = value; }
 		}
 		
-		public List<String> ResultString
+		public String ResultString
 		{
 			get { return result; }
 			set { result = value; }
 		}
 		
-		public List<String> TypeString
+		public Int16 ProportionString
 		{
-			get { return type; }
-			set { type = value; }
+			get { return proportion; }
+			set { proportion = value; }
 		}
+		
 		
 		public String  CategorieString
 		{
 			get { return categorie; }
 			set { categorie = value; }
 		}
-
-
-		public InteracObj ()
-		{
+		
+		public InteracObj() { 
+			
 		}
 	}
 }

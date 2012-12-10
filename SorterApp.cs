@@ -138,7 +138,8 @@ namespace Sorter
 					activite_type = Activites[wrapper2.activite_index];
 				}
 				Activite acti = new Activite(activite_type);
-				acti.setParameters(threadHandle.TamaRT);
+				feederTama.add (acti);
+				//acti.setParameters(threadHandle.TamaRT);
 				Log.Debug ("Activité : {0}", activite_type);
 				
 			}

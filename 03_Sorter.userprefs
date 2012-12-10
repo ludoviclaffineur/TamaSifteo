@@ -9,13 +9,27 @@
       <File FileName="MyText.cs" Line="16" Column="41" />
       <File FileName="InteracObj.cs" Line="1" Column="1" />
       <File FileName="Tamagotchi.cs" Line="14" Column="23" />
+<<<<<<< HEAD
       <File FileName="Nourriture.cs" Line="86" Column="5" />
+=======
+<<<<<<< HEAD
+      <File FileName="Nourriture.cs" Line="1" Column="1" />
+      <File FileName="Activite.cs" Line="43" Column="10" />
+      <File FileName="RulesTama.cs" Line="1" Column="1" />
+=======
+      <File FileName="Nourriture.cs" Line="40" Column="37" />
+>>>>>>> 08d1205cf3caae0ba8babf723091c678e6577e20
       <File FileName="Activite.cs" Line="43" Column="10" />
       <File FileName="RulesTama.cs" Line="28" Column="4" />
       <File FileName="../Sifteo/Sifteo_SDK_mac_1_1_2/demos/03_Sorter/SorterApp.cs" Line="25" Column="23" />
       <File FileName="RulesObj.cs" Line="8" Column="13" />
+<<<<<<< HEAD
       <File FileName="Feeder.cs" Line="87" Column="40" />
       <File FileName="ObjNomVal.cs" Line="1" Column="1" />
+=======
+      <File FileName="Feeder.cs" Line="37" Column="5" />
+>>>>>>> 29b3849eacee4229675761fc711015124a336721
+>>>>>>> 08d1205cf3caae0ba8babf723091c678e6577e20
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

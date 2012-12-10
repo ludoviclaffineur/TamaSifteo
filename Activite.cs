@@ -4,11 +4,35 @@ namespace _Sorter
 {
 	public class Activite
 	{
-		string name;
+		public string name;
 		public Activite (string name)
 		{
 			this.name=name;
 		}
+
+		public float getCoeffAge (Tamagotchi tama)
+		{
+			float CoeffAge=1;
+			Console.WriteLine(tama.TamaRulesTabRT[4].ExplicationString);
+			switch(tama.TamaRulesTabRT[4].ExplicationString){
+			case "Bebe":
+				CoeffAge = 3;
+				Console.WriteLine("Youps");
+				break;
+			case "Vieux":
+				CoeffAge = 0.9f;
+				break;
+			case "Tres vieux":
+				CoeffAge = 0.8f;
+				break;
+			case "Invalide":
+				CoeffAge = 0.5f;
+				break;
+			}
+			return CoeffAge;
+			
+		}
+
 		public void setParameters(Tamagotchi tama){
 			switch (name)
 			{
