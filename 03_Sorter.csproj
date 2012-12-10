@@ -46,6 +46,7 @@
     <Compile Include="InteracObj.cs" />
     <Compile Include="Nourriture.cs" />
     <Compile Include="Activite.cs" />
+    <Compile Include="Feeder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

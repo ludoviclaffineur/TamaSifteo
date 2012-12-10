@@ -27,6 +27,7 @@ namespace Sorter
 		public ThreadRules threadHandle ;
 		public string [] Nourritures = {"hamburger","fruit","legume", "soda", "viande", "glace","cafe", "alcool", "eau"};
 		public string [] Activites = {"parc","culture","boite_de_nuit","cinema","sdb","lit"};
+		public Feeder feederTama;
 		// Here we initialize our app.
 		public override void Setup ()
 		{
@@ -50,7 +51,7 @@ namespace Sorter
 			threadHandle.TamaRT = tama;
 			threadHandle.TamaRulesRT = tama.TamaRulesTabRT;
 			threadHandle.CubeList=mWrappers;
-
+			feederTama = new Feeder(tama);
 			int i = 0;		
       
 			// Loop through all the cubes and set them up.
@@ -120,7 +121,8 @@ namespace Sorter
 					nourriture_type = Nourritures[wrapper2.nourriture_index];
 				}
 				Nourriture nourri = new Nourriture(nourriture_type);
-				nourri.setParameters(threadHandle.TamaRT);
+				feederTama.add (nourri);
+	//			nourri.setParameters(threadHandle.TamaRT);
 				Log.Debug ("Mange : {0}", nourriture_type);
 
 			}

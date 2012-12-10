@@ -1,19 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ThreadRules.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Feeder.cs">
     <Files>
       <File FileName="Bootstrap.cs" Line="15" Column="3" />
-      <File FileName="SorterApp.cs" Line="29" Column="86" />
-      <File FileName="ThreadRules.cs" Line="194" Column="43" />
-      <File FileName="CubeWrapper.cs" Line="131" Column="46" />
+      <File FileName="SorterApp.cs" Line="125" Column="4" />
+      <File FileName="ThreadRules.cs" Line="18" Column="28" />
+      <File FileName="CubeWrapper.cs" Line="234" Column="35" />
       <File FileName="MyText.cs" Line="16" Column="41" />
       <File FileName="InteracObj.cs" Line="1" Column="1" />
-      <File FileName="Tamagotchi.cs" Line="19" Column="22" />
-      <File FileName="Nourriture.cs" Line="82" Column="36" />
+      <File FileName="Tamagotchi.cs" Line="14" Column="23" />
+      <File FileName="Nourriture.cs" Line="40" Column="37" />
       <File FileName="Activite.cs" Line="43" Column="10" />
       <File FileName="RulesTama.cs" Line="28" Column="4" />
       <File FileName="../Sifteo/Sifteo_SDK_mac_1_1_2/demos/03_Sorter/SorterApp.cs" Line="25" Column="23" />
       <File FileName="RulesObj.cs" Line="8" Column="13" />
+      <File FileName="Feeder.cs" Line="37" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
